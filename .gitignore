@@ -1,0 +1,22 @@
+ref/
+notes/
+.env
+.streamlit/secrets.toml
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Environments
+.venv/
+env/
+venv/
+ENV/
+
+# Local Data/Models
+data/raw/*
+!data/raw/.gitkeep
+models/*.pkl
+!models/.gitkeep

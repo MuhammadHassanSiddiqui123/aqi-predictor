@@ -1,0 +1,197 @@
+SHAP FEATURE IMPORTANCE SUMMARY
+==================================================
+
+HGBR – 1d  (R²=0.819, MAE=7.33, RMSE=9.96)
+------------------------------------------
+   1. pm2_5                           mean|SHAP| = 15.0124
+   2. pm2_5_diff                      mean|SHAP| = 1.1525
+   3. pm10_diff                       mean|SHAP| = 1.0141
+   4. so2                             mean|SHAP| = 0.9050
+   5. aqi_diff                        mean|SHAP| = 0.8302
+   6. temperature                     mean|SHAP| = 0.7196
+   7. temp_diff                       mean|SHAP| = 0.5969
+   8. o3                              mean|SHAP| = 0.5555
+   9. pm2_5_lag_1                     mean|SHAP| = 0.5152
+  10. so2_lag_1                       mean|SHAP| = 0.4979
+
+HGBR – 2d  (R²=0.438, MAE=13.26, RMSE=17.54)
+--------------------------------------------
+   1. pm2_5                           mean|SHAP| = 9.4317
+   2. temperature                     mean|SHAP| = 2.9140
+   3. month_cos                       mean|SHAP| = 1.8500
+   4. aqi_roll_mean_7                 mean|SHAP| = 1.6629
+   5. pm10_diff                       mean|SHAP| = 1.3377
+   6. pm10_lag_1                      mean|SHAP| = 0.9315
+   7. pm10                            mean|SHAP| = 0.6489
+   8. so2_diff                        mean|SHAP| = 0.5554
+   9. so2_lag_1                       mean|SHAP| = 0.5479
+  10. pm2_5_lag_1                     mean|SHAP| = 0.5114
+
+HGBR – 3d  (R²=0.329, MAE=14.68, RMSE=19.14)
+--------------------------------------------
+   1. temperature                     mean|SHAP| = 4.3384
+   2. aqi_roll_mean_7                 mean|SHAP| = 4.0377
+   3. pm2_5                           mean|SHAP| = 3.7597
+   4. pm_ratio                        mean|SHAP| = 2.9577
+   5. month_cos                       mean|SHAP| = 2.4430
+   6. no2_lag_1                       mean|SHAP| = 1.6052
+   7. pm10_diff                       mean|SHAP| = 1.2266
+   8. pm10                            mean|SHAP| = 0.7760
+   9. o3_lag_1                        mean|SHAP| = 0.7380
+  10. windspeed                       mean|SHAP| = 0.7295
+
+RF – 1d  (R²=0.819, MAE=7.09, RMSE=9.96)
+----------------------------------------
+   1. pm2_5                           mean|SHAP| = 8.4890
+   2. log_pm2_5                       mean|SHAP| = 7.9377
+   3. aqi                             mean|SHAP| = 0.6311
+   4. pm10_diff                       mean|SHAP| = 0.4135
+   5. so2                             mean|SHAP| = 0.4068
+   6. temp_diff                       mean|SHAP| = 0.3730
+   7. temperature                     mean|SHAP| = 0.3668
+   8. o3                              mean|SHAP| = 0.3503
+   9. pm2_5_diff                      mean|SHAP| = 0.2921
+  10. aqi_diff                        mean|SHAP| = 0.2615
+
+RF – 2d  (R²=0.411, MAE=13.63, RMSE=17.95)
+------------------------------------------
+   1. pm2_5                           mean|SHAP| = 6.1733
+   2. log_pm2_5                       mean|SHAP| = 5.3111
+   3. temperature                     mean|SHAP| = 1.9104
+   4. month_cos                       mean|SHAP| = 1.1494
+   5. aqi_roll_mean_7                 mean|SHAP| = 0.5938
+   6. pm10_lag_1                      mean|SHAP| = 0.5824
+   7. pm10_diff                       mean|SHAP| = 0.5016
+   8. aqi                             mean|SHAP| = 0.4593
+   9. humidity                        mean|SHAP| = 0.4324
+  10. pm_ratio                        mean|SHAP| = 0.3918
+
+RF – 3d  (R²=0.355, MAE=14.51, RMSE=18.78)
+------------------------------------------
+   1. temperature                     mean|SHAP| = 3.2336
+   2. pm2_5                           mean|SHAP| = 3.1940
+   3. log_pm2_5                       mean|SHAP| = 2.9571
+   4. aqi_roll_mean_7                 mean|SHAP| = 2.7986
+   5. month_cos                       mean|SHAP| = 2.0054
+   6. pm_ratio                        mean|SHAP| = 1.4986
+   7. no2_lag_1                       mean|SHAP| = 0.6420
+   8. pm10_lag_1                      mean|SHAP| = 0.5553
+   9. humidity                        mean|SHAP| = 0.5493
+  10. aqi                             mean|SHAP| = 0.5355
+
+RIDGE – 1d  (R²=0.866, MAE=6.33, RMSE=8.56)
+-------------------------------------------
+   1. pm2_5                           mean|SHAP| = 11.9587
+   2. pm2_5_lag_1                     mean|SHAP| = 8.2457
+   3. co_lag_1                        mean|SHAP| = 7.0125
+   4. pm2_5_diff                      mean|SHAP| = 4.8586
+   5. co                              mean|SHAP| = 4.8164
+   6. o3_lag_1                        mean|SHAP| = 3.0159
+   7. aqi_diff                        mean|SHAP| = 2.9253
+   8. aqi                             mean|SHAP| = 2.6194
+   9. co_diff                         mean|SHAP| = 2.1718
+  10. so2                             mean|SHAP| = 1.5646
+
+RIDGE – 2d  (R²=0.471, MAE=12.66, RMSE=17.02)
+---------------------------------------------
+   1. co                              mean|SHAP| = 9.7540
+   2. co_lag_1                        mean|SHAP| = 8.4208
+   3. pm_ratio                        mean|SHAP| = 7.6726
+   4. pm2_5_lag_1                     mean|SHAP| = 7.5221
+   5. no2_lag_1                       mean|SHAP| = 6.3145
+   6. pm2_5                           mean|SHAP| = 5.4375
+   7. no2_diff                        mean|SHAP| = 4.4147
+   8. no2                             mean|SHAP| = 4.2775
+   9. co_diff                         mean|SHAP| = 3.9173
+  10. pm10                            mean|SHAP| = 3.0404
+
+RIDGE – 3d  (R²=0.387, MAE=14.31, RMSE=18.30)
+---------------------------------------------
+   1. co                              mean|SHAP| = 15.4661
+   2. co_lag_1                        mean|SHAP| = 13.7542
+   3. pm_ratio                        mean|SHAP| = 12.9382
+   4. no2                             mean|SHAP| = 6.1590
+   5. no2_lag_1                       mean|SHAP| = 5.9574
+   6. pm10                            mean|SHAP| = 5.7598
+   7. co_diff                         mean|SHAP| = 5.5867
+   8. pm2_5_lag_1                     mean|SHAP| = 5.2830
+   9. no2_diff                        mean|SHAP| = 3.7965
+  10. month_cos                       mean|SHAP| = 3.7798
+
+DT – 1d  (R²=0.705, MAE=8.90, RMSE=12.70)
+-----------------------------------------
+   1. log_pm2_5                       mean|SHAP| = 12.8630
+   2. aqi                             mean|SHAP| = 8.2275
+   3. aqi_lag_1                       mean|SHAP| = 1.5072
+   4. pm10_diff                       mean|SHAP| = 1.0809
+   5. month_sin                       mean|SHAP| = 0.7911
+   6. pm2_5_diff                      mean|SHAP| = 0.7013
+   7. pm2_5                           mean|SHAP| = 0.6561
+   8. aqi_roll_mean_3                 mean|SHAP| = 0.5846
+   9. co_diff                         mean|SHAP| = 0.5107
+  10. aqi_lag_2                       mean|SHAP| = 0.3544
+
+DT – 2d  (R²=0.375, MAE=13.69, RMSE=18.50)
+------------------------------------------
+   1. log_pm2_5                       mean|SHAP| = 9.3868
+   2. aqi                             mean|SHAP| = 7.1105
+   3. temperature                     mean|SHAP| = 2.2082
+   4. aqi_roll_mean_7                 mean|SHAP| = 1.4548
+   5. no2_diff                        mean|SHAP| = 1.2007
+   6. aqi_lag_2                       mean|SHAP| = 1.0716
+   7. pm2_5                           mean|SHAP| = 0.9009
+   8. aqi_roll_mean_3                 mean|SHAP| = 0.8720
+   9. o3_diff                         mean|SHAP| = 0.8063
+  10. o3                              mean|SHAP| = 0.7880
+
+DT – 3d  (R²=0.148, MAE=16.81, RMSE=21.58)
+------------------------------------------
+   1. month_cos                       mean|SHAP| = 9.1942
+   2. aqi                             mean|SHAP| = 5.2888
+   3. log_pm2_5                       mean|SHAP| = 3.0349
+   4. aqi_lag_1                       mean|SHAP| = 2.7241
+   5. pm2_5                           mean|SHAP| = 1.9676
+   6. humidity                        mean|SHAP| = 1.4826
+   7. so2_lag_1                       mean|SHAP| = 1.1664
+   8. pm_ratio                        mean|SHAP| = 0.9184
+   9. month                           mean|SHAP| = 0.8966
+  10. o3_lag_1                        mean|SHAP| = 0.8170
+
+MLP – 1d  (R²=0.750, MAE=9.06, RMSE=11.70)
+------------------------------------------
+   1. log_pm2_5                       mean|SHAP| = 8.4606
+   2. pm2_5                           mean|SHAP| = 5.4956
+   3. co                              mean|SHAP| = 5.1531
+   4. log_co                          mean|SHAP| = 4.7727
+   5. co_lag_1                        mean|SHAP| = 3.0004
+   6. aqi_diff                        mean|SHAP| = 2.0724
+   7. month_cos                       mean|SHAP| = 1.6056
+   8. month_sin                       mean|SHAP| = 1.5804
+   9. so2                             mean|SHAP| = 1.5420
+  10. pm2_5_diff                      mean|SHAP| = 1.5089
+
+MLP – 2d  (R²=0.257, MAE=14.60, RMSE=20.16)
+-------------------------------------------
+   1. log_pm2_5                       mean|SHAP| = 7.6190
+   2. co                              mean|SHAP| = 5.4879
+   3. log_co                          mean|SHAP| = 5.3772
+   4. month_cos                       mean|SHAP| = 4.2569
+   5. co_lag_1                        mean|SHAP| = 3.5382
+   6. pm2_5                           mean|SHAP| = 3.2794
+   7. month                           mean|SHAP| = 2.4310
+   8. aqi_diff                        mean|SHAP| = 2.4181
+   9. no2_diff                        mean|SHAP| = 2.3491
+  10. season_idx                      mean|SHAP| = 2.3463
+
+MLP – 3d  (R²=-0.022, MAE=17.79, RMSE=23.64)
+--------------------------------------------
+   1. log_pm2_5                       mean|SHAP| = 5.4611
+   2. month_cos                       mean|SHAP| = 5.1476
+   3. co                              mean|SHAP| = 4.9165
+   4. log_co                          mean|SHAP| = 3.8392
+   5. season_idx                      mean|SHAP| = 2.8708
+   6. co_lag_1                        mean|SHAP| = 2.8049
+   7. o3_lag_1                        mean|SHAP| = 2.4369
+   8. windspeed                       mean|SHAP| = 2.2058
+   9. humidity                        mean|SHAP| = 2.1446
+  10. month                           mean|SHAP| = 1.9400

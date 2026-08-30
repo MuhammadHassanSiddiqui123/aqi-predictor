@@ -1,0 +1,114 @@
+Data shape: (1097, 45)
+Date range: 2023-02-14 00:00:00 → 2026-02-14 00:00:00
+
+Columns:
+AQI, PM2.5, PM10, NO2, SO2, CO, O3, Temperature, Humidity, Precipitation, WindSpeed, event_timestamp, month, weekday, season_idx, month_sin, month_cos, day_sin, day_cos, log_PM2.5, log_CO, pm_ratio, AQI_lag_1, AQI_lag_2, PM2.5_lag_1, PM10_lag_1, NO2_lag_1, SO2_lag_1, CO_lag_1, O3_lag_1, AQI_roll_mean_3, AQI_roll_std_3, AQI_roll_mean_7, AQI_diff, PM2.5_diff, PM10_diff, NO2_diff, SO2_diff, CO_diff, O3_diff, temp_diff, hum_diff, target_aqi_1d, target_aqi_2d, target_aqi_3d
+
+DTypes:
+AQI                       float64
+PM2.5                     float64
+PM10                      float64
+NO2                       float64
+SO2                       float64
+CO                        float64
+O3                        float64
+Temperature               float64
+Humidity                  float64
+Precipitation             float64
+WindSpeed                 float64
+event_timestamp    datetime64[us]
+month                       int64
+weekday                     int64
+season_idx                  int64
+month_sin                 float64
+month_cos                 float64
+day_sin                   float64
+day_cos                   float64
+log_PM2.5                 float64
+log_CO                    float64
+pm_ratio                  float64
+AQI_lag_1                 float64
+AQI_lag_2                 float64
+PM2.5_lag_1               float64
+PM10_lag_1                float64
+NO2_lag_1                 float64
+SO2_lag_1                 float64
+CO_lag_1                  float64
+O3_lag_1                  float64
+AQI_roll_mean_3           float64
+AQI_roll_std_3            float64
+AQI_roll_mean_7           float64
+AQI_diff                  float64
+PM2.5_diff                float64
+PM10_diff                 float64
+NO2_diff                  float64
+SO2_diff                  float64
+CO_diff                   float64
+O3_diff                   float64
+temp_diff                 float64
+hum_diff                  float64
+target_aqi_1d             float64
+target_aqi_2d             float64
+target_aqi_3d             float64
+dtype: object
+
+Describe (numeric):
+               AQI        PM2.5  ...  target_aqi_2d  target_aqi_3d
+count  1097.000000  1097.000000  ...    1097.000000    1097.000000
+mean     87.501753    28.287713  ...      87.385641      87.341961
+min      38.792000     8.521000  ...      38.792000      38.792000
+25%      68.375000    20.079000  ...      68.375000      68.375000
+50%      80.833000    25.779000  ...      80.833000      80.833000
+75%      99.583000    34.100000  ...      99.500000      99.500000
+max     214.625000    55.131500  ...     214.625000     214.625000
+std      26.598676    11.031859  ...      26.430248      26.379591
+
+[8 rows x 45 columns]
+
+Missing values:
+AQI                0
+PM2.5              0
+PM10               0
+NO2                0
+SO2                0
+CO                 0
+O3                 0
+Temperature        0
+Humidity           0
+Precipitation      0
+WindSpeed          0
+event_timestamp    0
+month              0
+weekday            0
+season_idx         0
+month_sin          0
+month_cos          0
+day_sin            0
+day_cos            0
+log_PM2.5          0
+log_CO             0
+pm_ratio           0
+AQI_lag_1          0
+AQI_lag_2          0
+PM2.5_lag_1        0
+PM10_lag_1         0
+NO2_lag_1          0
+SO2_lag_1          0
+CO_lag_1           0
+O3_lag_1           0
+AQI_roll_mean_3    0
+AQI_roll_std_3     0
+AQI_roll_mean_7    0
+AQI_diff           0
+PM2.5_diff         0
+PM10_diff          0
+NO2_diff           0
+SO2_diff           0
+CO_diff            0
+O3_diff            0
+temp_diff          0
+hum_diff           0
+target_aqi_1d      0
+target_aqi_2d      0
+target_aqi_3d      0
+dtype: int64
