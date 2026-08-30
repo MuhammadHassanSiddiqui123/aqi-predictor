@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22C55E"/>
+      <stop offset="35%" stop-color="#FDC830"/>
+      <stop offset="70%" stop-color="#FF7A18"/>
+      <stop offset="100%" stop-color="#DC2430"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background badge -->
+  <circle cx="100" cy="100" r="96" fill="url(#bg)"/>
+  <circle cx="100" cy="100" r="96" fill="none" stroke="url(#ring)" stroke-width="4"/>
+
+  <!-- wind / air-flow motif -->
+  <g stroke="#ffffff" stroke-width="10" stroke-linecap="round" fill="none">
+    <path d="M46 78 H126 a16 16 0 1 0 -14 -24"/>
+    <path d="M46 108 H146 a16 16 0 1 1 -14 24"/>
+    <path d="M46 138 H106"/>
+  </g>
+</svg>

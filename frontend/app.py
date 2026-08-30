@@ -16,7 +16,7 @@ import os
 # --- Page Configuration ---
 st.set_page_config(
     page_title="Pearls AQI Predictor | Karachi",
-    page_icon="🌬️",
+    page_icon="frontend/assets/favicon.png",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -166,7 +166,7 @@ def get_aqi_class(aqi):
 
 # --- Sidebar ---
 with st.sidebar:
-    st.image("https://cdn-icons-png.flaticon.com/512/1163/1163624.png", width=100)
+    st.image("frontend/assets/logo.png", width=100)
     st.title("Settings")
     
     model_choice = st.selectbox(
@@ -188,6 +188,7 @@ with st.sidebar:
     # Show deployment mode badge
     mode_label = "⚡ Integrated Mode" if INTEGRATED_MODE else "🖥️ API Mode"
     st.info(f"**{mode_label}** • Models retrain daily at 00:00 UTC.")
+    st.caption("Created by **Muhammad Hassan Siddiqui**")
 
 # --- Header ---
 col1, col2 = st.columns([2, 1])
@@ -305,5 +306,6 @@ st.markdown("""
 <div style='text-align: center; color: gray;'>
     Built for <b>Pearls AQI Project</b> • Karachi, Pakistan<br>
     Data sources: Open-Meteo API, Hopsworks • Model: Multi-Model Suite (Ridge, HGBR, RF, MLP, DT)
+    <br> <span style='color: #667eea;'>Created by Muhammad Hassan Siddiqui</span>
 </div>
 """, unsafe_allow_html=True)
