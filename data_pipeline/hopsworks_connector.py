@@ -39,7 +39,8 @@ def create_or_get_feature_group(df, name="karachi_aqi_daily", version=5):
         primary_key=primary_key,
         description="Daily Karachi AQI and Weather features with derived temporal and lag statistics.",
         online_enabled=True,
-        event_time="event_timestamp"   # Keep original timestamp for time‑based queries
+        event_time="event_timestamp",
+        time_travel_format="HUDI"
     )
     
     fg.insert(df)
