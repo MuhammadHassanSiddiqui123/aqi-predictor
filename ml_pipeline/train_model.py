@@ -42,7 +42,7 @@ def fetch_data_from_hopsworks(fg_name="karachi_aqi_daily", version=5):
     fg = fs.get_feature_group(name=fg_name, version=version)
 
     # Read the data
-    df = fg.read()
+    df = fg.read(online=True)
 
     # Sort by date for safety
     df = df.sort_values("event_timestamp").reset_index(drop=True)

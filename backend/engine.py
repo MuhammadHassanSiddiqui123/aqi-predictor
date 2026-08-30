@@ -144,15 +144,14 @@ class AQIEngine:
         """Fetches the latest rows, from Hopsworks Feature Group if
         connected, else from the local feature-store CSV."""
         if self.use_hopsworks and self.feature_group is not None:
-            df = self.feature_group.read()
-            df = df.sort_values("event_timestamp").reset_index(drop=True)
-            return df
-
-        if os.path.exists(LOCAL_CSV_PATH):
-            df = pd.read_csv(LOCAL_CSV_PATH, parse_dates=["event_timestamp"])
-            df.columns = df.columns.str.lower().str.replace(".", "_", regex=False)
-            df = df.sort_values("event_timestamp").reset_index(drop=True)
-            return df
+            try:
+                df = self.feature_group.read(online=True)
+                df = df.sort_values("event_timestamp").reset_index(drop=True)
+                if not df.empty:
+                    return df
+                print("Hopsworks online read returned no rows; falling back to local CSV.")
+            except Exception as e:
+                print(f"Hopsworks online read failed ({e}); falling back to local CSV.")
 
         return None
 
