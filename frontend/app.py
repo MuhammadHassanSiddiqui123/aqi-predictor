@@ -193,7 +193,7 @@ with st.sidebar:
 # --- Header ---
 col1, col2 = st.columns([2, 1])
 with col1:
-    st.title("🌬️ Karachi AQI Dashboard")
+    st.title("Karachi AQI Dashboard")
     st.markdown("Real-time air quality monitoring and 3-day predictive forecasting powered by Machine Learning.")
 with col2:
     st.markdown(f"<div style='text-align: right; color: #808080; padding-top: 30px;'>Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M')}</div>", unsafe_allow_html=True)
