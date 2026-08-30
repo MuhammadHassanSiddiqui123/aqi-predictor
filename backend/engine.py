@@ -141,17 +141,25 @@ class AQIEngine:
                       f"`python -m ml_pipeline.train_model` first.")
 
     def _get_latest_data(self):
-        """Fetches the latest rows, from Hopsworks Feature Group if
-        connected, else from the local feature-store CSV."""
-        if self.use_hopsworks and self.feature_group is not None:
-            try:
-                df = self.feature_group.read(online=True)
-                df = df.sort_values("event_timestamp").reset_index(drop=True)
-                if not df.empty:
-                    return df
-                print("Hopsworks online read returned no rows; falling back to local CSV.")
-            except Exception as e:
-                print(f"Hopsworks online read failed ({e}); falling back to local CSV.")
+        """Fetches the latest rows from the local feature-store CSV.
+
+        NOTE: this intentionally does NOT read live from Hopsworks'
+        feature store, even when connected for models. Hopsworks'
+        *online* store read requires a direct low-level connection that
+        hangs indefinitely on network-restricted hosts like Streamlit
+        Community Cloud (never raises a catchable exception, just
+        retries forever) and the *offline* Hudi read has its own
+        reliability issues on a python-only client. The local CSV is
+        kept fresh instead by the hourly GitHub Actions feature
+        pipeline, which commits it back to the repo after every run --
+        see .github/workflows/feature-pipeline.yml. Since Streamlit
+        Cloud redeploys/re-clones on every push, this file is always
+        current without needing a live read at serving time."""
+        if os.path.exists(LOCAL_CSV_PATH):
+            df = pd.read_csv(LOCAL_CSV_PATH, parse_dates=["event_timestamp"])
+            df.columns = df.columns.str.lower().str.replace(".", "_", regex=False)
+            df = df.sort_values("event_timestamp").reset_index(drop=True)
+            return df
 
         return None
 

@@ -8,6 +8,8 @@ on:
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -30,3 +32,11 @@ jobs:
         run: |
           export PYTHONPATH=$PYTHONPATH:.
           python -m data_pipeline.pipeline_manager --days 1
+
+      - name: Commit and push updated feature CSV
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/feature_store/karachi_daily_features.csv
+          git diff --staged --quiet && echo "No data changes to commit" || \
+            (git commit -m "Auto-update feature data [skip ci]" && git push)
