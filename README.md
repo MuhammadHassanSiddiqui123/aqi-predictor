@@ -9,7 +9,7 @@ An end-to-end, serverless machine learning system designed to forecast the **Air
 ---
 
 ## 🚀 Live Demo
-Experience the real-time dashboard here: **[Karachi AQI Predictor](https://airqualityindexpredictor10pearlsproject.streamlit.app/)**
+Experience the real-time dashboard here: **[Pearls AQI Predictor](https://aqi-predictor-muuoitut5uarhwpuqey8kr.streamlit.app/)**
 
 ---
 
