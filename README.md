@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌬️ Pearls AQI Predictor — Karachi
+# Pearls AQI Predictor — Karachi
 
 **A fully serverless, end-to-end machine learning system that forecasts Karachi's Air Quality Index 3 days into the future.**
 
