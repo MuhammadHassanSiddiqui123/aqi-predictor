@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <div align="center">
-=======
-# Pearls AQI Predictor: Karachi
->>>>>>> 465d7001632d0b8e6feaf7104e329d8e8db7cf8c
 
 # 🌬️ Pearls AQI Predictor — Karachi
 
@@ -21,7 +17,6 @@ Built for the **10Pearls Shine Internship Program**
 
 ---
 
-<<<<<<< HEAD
 ## Table of Contents
 
 - [Overview](#overview)
@@ -45,10 +40,6 @@ Built for the **10Pearls Shine Internship Program**
 - [Troubleshooting](#troubleshooting--lessons-learned)
 - [Roadmap](#roadmap)
 - [Credits](#credits)
-=======
-## 🚀 Live Demo
-Experience the real-time dashboard here: **[Pearls AQI Predictor](https://aqi-predictor-muuoitut5uarhwpuqey8kr.streamlit.app/)**
->>>>>>> 465d7001632d0b8e6feaf7104e329d8e8db7cf8c
 
 ---
 
@@ -370,7 +361,6 @@ That's it — `.github/workflows/feature-pipeline.yml` runs hourly and `.github/
 
 ---
 
-<<<<<<< HEAD
 ## Troubleshooting — Lessons Learned
 
 Real issues hit and fixed while building this out, kept here since they'll likely bite anyone extending this project too:
@@ -436,8 +426,3 @@ The original pipeline overwrote the local CSV with <i>only</i> the newly-fetched
 - Data: [Open-Meteo](https://open-meteo.com/)
 - Feature Store & Model Registry: [Hopsworks](https://www.hopsworks.ai/)
 - Hosting: [Streamlit Community Cloud](https://streamlit.io/cloud)
-=======
-## 📝 License & Credits
-Developed as part of the **10Pearls Shine Internship Program**.
-Data provided by [Open-Meteo](https://open-meteo.com/).
->>>>>>> 465d7001632d0b8e6feaf7104e329d8e8db7cf8c
