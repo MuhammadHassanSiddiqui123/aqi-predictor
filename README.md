@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 <div align="center">
 =======
 # Pearls AQI Predictor: Karachi
 >>>>>>> 465d7001632d0b8e6feaf7104e329d8e8db7cf8c
 
-# 🌬️ Pearls AQI Predictor — Karachi
+# Pearls AQI Predictor — Karachi
 
 **A fully serverless, end-to-end machine learning system that forecasts Karachi's Air Quality Index 3 days into the future.**
 
@@ -21,7 +20,6 @@ Built for the **10Pearls Shine Internship Program**
 
 ---
 
-<<<<<<< HEAD
 ## Table of Contents
 
 - [Overview](#overview)
