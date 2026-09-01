@@ -96,10 +96,14 @@ st.markdown("""
     .status-unhealthy   { color: #E0631E; }
     .status-hazardous     { color: #B91C4B; }
 
-    /* Hide default Streamlit chrome */
+    /* Hide default Streamlit chrome -- target these specifically by
+       their own test-ids rather than the generic header/stToolbar
+       wrappers, since those are reused for the sidebar's own
+       expand/collapse control and hiding them breaks that control. */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
-    header {visibility: hidden;}
+    [data-testid="stAppDeployButton"] {display: none;}
+    [data-testid="stMainMenu"] {display: none;}
     </style>
     """, unsafe_allow_html=True)
 
@@ -212,7 +216,7 @@ with st.sidebar:
 # --- Header ---
 col1, col2 = st.columns([2, 1])
 with col1:
-    st.title("🌬️ Karachi AQI Dashboard")
+    st.title("Karachi AQI Dashboard")
     st.markdown("Real-time air quality monitoring and 3-day predictive forecasting powered by Machine Learning.")
 with col2:
     st.markdown(f"<div style='text-align: right; color: #9AA0A6; padding-top: 30px;'>Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M')}</div>", unsafe_allow_html=True)
