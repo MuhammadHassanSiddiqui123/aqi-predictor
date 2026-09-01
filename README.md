@@ -1,4 +1,4 @@
-# 🌬️ Pearls AQI Predictor: Karachi
+# Pearls AQI Predictor: Karachi
 
 [![Streamlit App](https://static.streamlit.io/badge_streamlit.svg)](https://airqualityindexpredictor10pearlsproject.streamlit.app/)
 [![MLOps: Hopsworks](https://img.shields.io/badge/MLOps-Hopsworks-blue)](https://www.hopsworks.ai/)
