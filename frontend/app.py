@@ -74,7 +74,7 @@ st.markdown("""
     }
     .aqi-gauge-inner .aqi-number {
         font-family: 'Space Grotesk', sans-serif;
-        font-size: 56px; font-weight: 700; margin: 0; line-height: 1;
+        font-size: 46px; font-weight: 700; margin: 0; line-height: 1;
     }
     .aqi-gauge-inner .aqi-category {
         font-size: 15px; font-weight: 600; margin-top: 6px;
@@ -232,7 +232,7 @@ if current_data and "error" not in current_data:
     st.markdown(f"""
         <div class="aqi-gauge" style="background: conic-gradient({severity_color} 0deg {gauge_deg}deg, #EEEAE0 {gauge_deg}deg 360deg);">
             <div class="aqi-gauge-inner">
-                <p class="aqi-number" style="color: {severity_color};">{aqi}</p>
+                <p class="aqi-number" style="color: {severity_color};">{round(aqi)}</p>
                 <p class="aqi-category {status_class}">{current_data['category']}</p>
                 <p class="aqi-label">Air Quality Index</p>
             </div>
