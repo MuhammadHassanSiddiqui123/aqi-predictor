@@ -21,75 +21,94 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# --- Custom CSS for Premium Dark Mode ---
+# --- Custom CSS: Warm White Theme ---
 st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
     html, body, [class*="css"] {
-        font-family: 'Outfit', sans-serif;
-        color: #e0e0e0;
+        font-family: 'Inter', sans-serif;
+        color: #1C2321;
+    }
+
+    h1, h2, h3 {
+        font-family: 'Space Grotesk', sans-serif;
+        color: #1C2321 !important;
+        font-weight: 600 !important;
+    }
+
+    p, span, label {
+        color: #4B5259;
     }
 
     .main {
-        background-color: #0e1117;
+        background-color: #FAFAF7;
     }
 
     [data-testid="stSidebar"] {
-        background-color: #1a1c24;
+        background-color: #FFFFFF;
+        border-right: 1px solid #E4E1D8;
     }
 
     .stMetric {
-        background-color: #1a1c24;
+        background-color: #FFFFFF;
         padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        border-left: 5px solid #667eea;
-        color: #ffffff;
+        border-radius: 12px;
+        border: 1px solid #E4E1D8;
+        border-left: 3px solid #0E7C86;
     }
+    [data-testid="stMetricLabel"] { color: #6B7280; }
+    [data-testid="stMetricValue"] { color: #1C2321; font-family: 'Space Grotesk', sans-serif; }
 
-    .aqi-card {
-        padding: 30px;
-        border-radius: 20px;
-        color: white;
-        text-align: center;
-        margin-bottom: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        transition: transform 0.3s ease;
+    /* --- AQI gauge (hero) --- */
+    .aqi-gauge {
+        width: 220px; height: 220px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        margin: 10px auto 20px auto;
     }
-    
-    .aqi-card:hover {
-        transform: translateY(-5px);
+    .aqi-gauge-inner {
+        width: 178px; height: 178px; border-radius: 50%;
+        background: #FFFFFF;
+        box-shadow: inset 0 0 0 1px #E4E1D8;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .aqi-gauge-inner .aqi-number {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 56px; font-weight: 700; margin: 0; line-height: 1;
+    }
+    .aqi-gauge-inner .aqi-category {
+        font-size: 15px; font-weight: 600; margin-top: 6px;
+    }
+    .aqi-gauge-inner .aqi-label {
+        font-size: 12px; color: #9AA0A6; margin-top: 4px;
     }
 
     .forecast-card {
-        background-color: #1a1c24;
+        background-color: #FFFFFF;
         padding: 20px;
-        border-radius: 15px;
-        border: 1px solid #2d2f3b;
+        border-radius: 12px;
+        border: 1px solid #E4E1D8;
         text-align: center;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
-    .status-good { background: linear-gradient(135deg, #0575E6, #00F260); }
-    .status-moderate { background: linear-gradient(135deg, #FDC830, #F37335); }
-    .status-unhealthy { background: linear-gradient(135deg, #e53935, #e35d5b); }
-    .status-hazardous { background: linear-gradient(135deg, #8E2DE2, #4A00E0); }
+    .status-good      { color: #22C55E; }
+    .status-moderate   { color: #C98A00; }
+    .status-unhealthy   { color: #E0631E; }
+    .status-hazardous     { color: #B91C4B; }
 
-    /* Custom styles for headers in dark mode */
-    h1, h2, h3 {
-        color: #ffffff !important;
-    }
-    
-    p {
-        color: #b0b0b0;
-    }
-
-    /* Hide Streamlit elements */
+    /* Hide default Streamlit chrome */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
+    header {visibility: hidden;}
     </style>
     """, unsafe_allow_html=True)
+
+AQI_SEVERITY_COLORS = {
+    "status-good": "#22C55E",
+    "status-moderate": "#C98A00",
+    "status-unhealthy": "#E0631E",
+    "status-hazardous": "#B91C4B",
+}
 
 
 # ============================================================
@@ -187,27 +206,32 @@ with st.sidebar:
     # Show deployment mode badge
     mode_label = "⚡ Integrated Mode" if INTEGRATED_MODE else "🖥️ API Mode"
     st.info(f"**{mode_label}** • Models retrain daily at 00:00 UTC.")
+
     st.caption("Created by **Muhammad Hassan Siddiqui**")
 
 # --- Header ---
 col1, col2 = st.columns([2, 1])
 with col1:
-    st.title("Karachi AQI Dashboard")
+    st.title("🌬️ Karachi AQI Dashboard")
     st.markdown("Real-time air quality monitoring and 3-day predictive forecasting powered by Machine Learning.")
 with col2:
-    st.markdown(f"<div style='text-align: right; color: #808080; padding-top: 30px;'>Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M')}</div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='text-align: right; color: #9AA0A6; padding-top: 30px;'>Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M')}</div>", unsafe_allow_html=True)
 
 # --- Real-time Metrics ---
 current_data = fetch_current()
 if current_data and "error" not in current_data:
     aqi = current_data['aqi']
     status_class = get_aqi_class(aqi)
-    
+    severity_color = AQI_SEVERITY_COLORS[status_class]
+    gauge_deg = min(max(aqi, 0) / 300, 1.0) * 360
+
     st.markdown(f"""
-        <div class="aqi-card {status_class}">
-            <h1 style='font-size: 72px; margin: 0; color: white !important;'>{aqi}</h1>
-            <h2 style='font-weight: 400; margin: 0; color: white !important;'>{current_data['category']}</h2>
-            <p style='color: rgba(255,255,255,0.8);'>Air Quality Index (Current)</p>
+        <div class="aqi-gauge" style="background: conic-gradient({severity_color} 0deg {gauge_deg}deg, #EEEAE0 {gauge_deg}deg 360deg);">
+            <div class="aqi-gauge-inner">
+                <p class="aqi-number" style="color: {severity_color};">{aqi}</p>
+                <p class="aqi-category {status_class}">{current_data['category']}</p>
+                <p class="aqi-label">Air Quality Index</p>
+            </div>
         </div>
     """, unsafe_allow_html=True)
 
@@ -227,28 +251,29 @@ if forecast_data and "error" not in forecast_data:
     for i, day in enumerate(forecast_data['forecast']):
         with f_cols[i]:
             status_c = get_aqi_class(day['aqi'])
+            day_color = AQI_SEVERITY_COLORS[status_c]
             r2_val = day.get('r2', 'N/A')
             mae_val = day.get('mae', 'N/A')
             rmse_val = day.get('rmse', 'N/A')
             st.markdown(f"""
                 <div class="forecast-card">
-                    <p style='color: #808080; margin-bottom: 5px;'>{day['date']}</p>
-                    <h3 style='margin: 0; color: white !important;'>{day['aqi']}</h3>
-                    <div style='height: 10px; width: 60%; margin: 15px auto; border-radius: 5px; background: { "linear-gradient(90deg, #0575E6, #00F260)" if day['aqi'] < 50 else "linear-gradient(90deg, #dc2430, #7b4397)" }'></div>
-                    <p style='font-weight: 600; color: #e0e0e0;'>{day['category']}</p>
-                    <div style='margin-top: 12px; padding-top: 12px; border-top: 1px solid #2d2f3b;'>
+                    <p style='color: #9AA0A6; margin-bottom: 5px;'>{day['date']}</p>
+                    <h3 style='margin: 0; color: {day_color} !important;'>{day['aqi']}</h3>
+                    <div style='height: 6px; width: 60%; margin: 15px auto; border-radius: 3px; background: {day_color};'></div>
+                    <p style='font-weight: 600; color: #1C2321;'>{day['category']}</p>
+                    <div style='margin-top: 12px; padding-top: 12px; border-top: 1px solid #E4E1D8;'>
                         <div style='display: flex; justify-content: space-around; text-align: center;'>
                             <div>
-                                <p style='color: #667eea; font-size: 18px; font-weight: 700; margin: 0;'>{r2_val}</p>
-                                <p style='color: #808080; font-size: 11px; margin: 0;'>R²</p>
+                                <p style='color: #0E7C86; font-size: 18px; font-weight: 700; margin: 0;'>{r2_val}</p>
+                                <p style='color: #9AA0A6; font-size: 11px; margin: 0;'>R²</p>
                             </div>
                             <div>
-                                <p style='color: #FF416C; font-size: 18px; font-weight: 700; margin: 0;'>{mae_val}</p>
-                                <p style='color: #808080; font-size: 11px; margin: 0;'>MAE</p>
+                                <p style='color: #E0631E; font-size: 18px; font-weight: 700; margin: 0;'>{mae_val}</p>
+                                <p style='color: #9AA0A6; font-size: 11px; margin: 0;'>MAE</p>
                             </div>
                             <div>
-                                <p style='color: #FDC830; font-size: 18px; font-weight: 700; margin: 0;'>{rmse_val}</p>
-                                <p style='color: #808080; font-size: 11px; margin: 0;'>RMSE</p>
+                                <p style='color: #C98A00; font-size: 18px; font-weight: 700; margin: 0;'>{rmse_val}</p>
+                                <p style='color: #9AA0A6; font-size: 11px; margin: 0;'>RMSE</p>
                             </div>
                         </div>
                     </div>
@@ -267,9 +292,9 @@ if history_data:
         x=df['date'], y=df['aqi'],
         mode='lines+markers',
         name='Historical AQI',
-        line=dict(color='#667eea', width=4),
+        line=dict(color='#0E7C86', width=4),
         fill='tozeroy',
-        fillcolor='rgba(102, 126, 234, 0.1)'
+        fillcolor='rgba(14, 124, 134, 0.08)'
     ))
     
     # Add forecast line
@@ -283,13 +308,14 @@ if history_data:
             x=combined_x, y=combined_y,
             mode='lines+markers',
             name='ML Forecast',
-            line=dict(color='#FF416C', width=4, dash='dot'),
+            line=dict(color='#E0631E', width=4, dash='dot'),
         ))
 
     fig.update_layout(
-        template='plotly_dark',
+        template='plotly_white',
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
+        font=dict(family='Inter, sans-serif', color='#1C2321'),
         margin=dict(l=0, r=0, t=20, b=0),
         xaxis_title="Date",
         yaxis_title="AQI Value",
@@ -302,9 +328,9 @@ if history_data:
 # --- Footer ---
 st.markdown("---")
 st.markdown("""
-<div style='text-align: center; color: gray;'>
-    Built for <b>Pearls AQI Project</b> • Karachi, Pakistan<br>
-    Data sources: Open-Meteo API, Hopsworks • Model: Multi-Model Suite (Ridge, HGBR, RF, MLP, DT)
-    <br> <span style='color: #667eea;'>Created by Muhammad Hassan Siddiqui</span>
+<div style='text-align: center; color: #9AA0A6;'>
+    Built for <b style='color: #1C2321;'>Pearls AQI Project</b> • Karachi, Pakistan<br>
+    Data sources: Open-Meteo API, Hopsworks • Model: Multi-Model Suite (Ridge, HGBR, RF, MLP, DT)<br>
+    <span style='color: #0E7C86;'>Created by Muhammad Hassan Siddiqui</span>
 </div>
 """, unsafe_allow_html=True)
