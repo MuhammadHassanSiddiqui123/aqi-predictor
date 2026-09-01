@@ -1,7 +1,4 @@
 <div align="center">
-=======
-# Pearls AQI Predictor: Karachi
->>>>>>> 465d7001632d0b8e6feaf7104e329d8e8db7cf8c
 
 # Pearls AQI Predictor — Karachi
 
